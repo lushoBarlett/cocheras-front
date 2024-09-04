@@ -1,3 +1,5 @@
+@use "./../public/styles/colores.scss";
+
 /* You can add global styles to this file, and also import other style files */
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
@@ -63,7 +65,7 @@ button{
 }
 
 .boton-resaltado{
-    background-color: blue;
+    background-color: colores.$color-principal;
     padding: 10px 20px;
     border-radius: 20px;
     color: white;
@@ -71,4 +73,5 @@ button{
 
 body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	color: colores.$color-texto;
 }

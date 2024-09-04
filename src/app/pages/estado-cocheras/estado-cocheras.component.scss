@@ -1,3 +1,18 @@
+@use "./../../../../public/styles/colores.scss";
+
 h1{
-    color: red;
+    color: colores.$color-principal;
+}
+
+#tabla{
+    display: flex;
+    flex-direction: column;
+    #header-tabla{  
+        font-size: larger;
+    }
+    >div {
+        display: grid;
+        grid-template-columns: 50px 1fr 1fr 1fr;
+        border-bottom: 1px solid colores.$color-texto;
+    }
 }

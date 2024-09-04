@@ -1,2 +1,57 @@
-<h1>Estado cocheras</h1>
+<h1>{{ titulo }}</h1>
 <a [routerLink]="['/login']">Cerrar sesión</a>
+<!-- 
+<table>
+    <thead>
+        <td>Nro</td>
+        <td>Disponibilidad</td>
+        <td>Ingreso</td>
+        <td>Acciones</td>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Disponible</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Disponible</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Disponible</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Disponible</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </tbody>
+</table>
+ -->
+<div>
+    <button (click)="agregarFila()" class="boton-resaltado">Agregar fila</button>
+</div>
+<div id="tabla">
+    <div id="header-tabla">
+        <div>{{ header.nro }}</div>
+        <div>{{ header.disponibilidad }}</div>
+        <div>{{ header.ingreso }}</div>
+        <div>{{ header.acciones }}</div>
+    </div>
+    @for (fila of filas; track $index) {
+        <div>
+            <div>{{ fila.nro }}</div>
+            <div>{{ fila.disponibilidad ? 'Disponible' : 'No disponible' }}</div>
+            <div>{{ fila.ingreso }}</div>
+            <div>{{ fila.acciones }}</div>
+        </div>    
+    }
+</div>
