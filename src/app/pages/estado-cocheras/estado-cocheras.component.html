@@ -36,11 +36,9 @@
     </tbody>
 </table>
  -->
-<div>
-    <button (click)="agregarFila()" class="boton-resaltado">Agregar fila</button>
-</div>
-<div id="tabla">
-    <div id="header-tabla">
+ <main class="flex-column-center">
+<div class="tabla">
+    <div class="header-tabla">
         <div>{{ header.nro }}</div>
         <div>{{ header.disponibilidad }}</div>
         <div>{{ header.ingreso }}</div>
@@ -49,9 +47,11 @@
     @for (fila of filas; track $index) {
         <div>
             <div>{{ fila.nro }}</div>
-            <div>{{ fila.disponibilidad ? 'Disponible' : 'No disponible' }}</div>
+            <div><p>{{ fila.disponibilidad ? 'Disponible' : 'No disponible'}}</p></div>
             <div>{{ fila.ingreso }}</div>
-            <div>{{ fila.acciones }}</div>
+            <div class="acciones-container">{{ fila.acciones }}</div>
         </div>    
     }
 </div>
+<button (click)="agregarFila()" class="boton-resaltado" id="agregar-cochera">+</button>
+ </main>
