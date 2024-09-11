@@ -82,6 +82,11 @@ body{
 	align-items: center;
 }
 
+a, a:visited{
+	color: colores.$color-texto;
+	text-decoration: none;
+}
+
 // *{
 // 	border: 1px solid red;
 // 	background-color: rgba(255, 0, 0, 0.048);

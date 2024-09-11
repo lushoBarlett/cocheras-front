@@ -1,4 +1,4 @@
-<h1>{{ titulo }}</h1>
+<app-header></app-header>
 <a [routerLink]="['/login']">Cerrar sesión</a>
 <!-- 
 <table>
@@ -39,17 +39,20 @@
  <main class="flex-column-center">
 <div class="tabla">
     <div class="header-tabla">
-        <div>{{ header.nro }}</div>
-        <div>{{ header.disponibilidad }}</div>
-        <div>{{ header.ingreso }}</div>
-        <div>{{ header.acciones }}</div>
+        <div>Nro</div>
+        <div>Disponibilidad</div>
+        <div>Ingreso</div>
+        <div>Acciones</div>
     </div>
     @for (fila of filas; track $index) {
         <div>
             <div>{{ fila.nro }}</div>
-            <div><p>{{ fila.disponibilidad ? 'Disponible' : 'No disponible'}}</p></div>
+            <div><span [ngClass]="{disponible: fila.disponibilidad, ocupado: !fila.disponibilidad}">{{ fila.disponibilidad ? 'Disponible' : 'No disponible'}}</span></div>
             <div>{{ fila.ingreso }}</div>
-            <div class="acciones-container">{{ fila.acciones }}</div>
+            <div class="acciones-container">
+                <button (click)="cambiarDisponibilidadCochera($index)"><img src="img/icons/prohibido.png" alt="Cambiar disponibilidad fila"></button>
+                <button (click)="eliminarFila($index)"><img src="img/icons/contenedor-de-basura.png" alt="Borrar fila"></button>
+            </div>
         </div>    
     }
 </div>
