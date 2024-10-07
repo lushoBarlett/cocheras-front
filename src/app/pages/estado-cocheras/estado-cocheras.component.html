@@ -1,6 +1,6 @@
 <app-header></app-header>
 <a [routerLink]="['/login']">Cerrar sesión</a>
-<!-- 
+<!--
 <table>
     <thead>
         <td>Nro</td>
@@ -46,14 +46,14 @@
     </div>
     @for (fila of filas; track $index) {
         <div>
-            <div>{{ fila.nro }}</div>
-            <div><span [ngClass]="{disponible: fila.disponibilidad, ocupado: !fila.disponibilidad}">{{ fila.disponibilidad ? 'Disponible' : 'No disponible'}}</span></div>
-            <div>{{ fila.ingreso }}</div>
+            <div>{{ fila.id }}</div>
+            <div><span [ngClass]="{disponible: !fila.deshabilitada, ocupado: fila.deshabilitada}">{{ fila.deshabilitada ? 'No disponible' : 'Disponible'}}</span></div>
+            <div></div>
             <div class="acciones-container">
-                <button (click)="cambiarDisponibilidadCochera($index)"><img src="img/icons/prohibido.png" alt="Cambiar disponibilidad fila"></button>
-                <button (click)="eliminarFila($index)"><img src="img/icons/contenedor-de-basura.png" alt="Borrar fila"></button>
+                <button (click)="cambiarDisponibilidadCochera(fila.id)"><img src="img/icons/prohibido.png" alt="Cambiar disponibilidad fila"></button>
+                <button (click)="eliminarFila(fila.id)"><img src="img/icons/contenedor-de-basura.png" alt="Borrar fila"></button>
             </div>
-        </div>    
+        </div>
     }
 </div>
 <button (click)="agregarFila()" class="boton-resaltado" id="agregar-cochera">+</button>
