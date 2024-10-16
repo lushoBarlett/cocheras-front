@@ -20,7 +20,7 @@ Esta página cuenta con una tabla de 4 columnas:
 
 Al final de la tabla debe haber un botón para agregar una cochera. Al clikearlo aparece una nueva cochera.
 
-Al clickear la palabra 'Disponible' debe aparecer un modal con un formulario para asignar un vehículo a la cochera, que pasará a estar ocupada. Al clikear la patente de una cochera ocupada, debe aparecer un modal con el monto a pagar y un botón para liberar la cochera, que pasará a estar disponible.
+Al clickear la palabra 'Disponible' debe aparecer un modal con un formulario para asignar un vehículo a la cochera, que pasará a estar ocupada. Al clikear la patente de una cochera ocupada, debe aparecer un modal con la confirmación de si se desea cerrar el estacionamiento. Luego de aceptar, un modal con el monto a pagar que no tiene acciones adicionales. Al cerrar el estacionamiento, la cochera pasará a estar disponible.
 
 Al intentar borrar cualquier cochera, debe aparecer un modal de confirmación.
 

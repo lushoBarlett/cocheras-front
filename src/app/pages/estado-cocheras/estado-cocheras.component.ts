@@ -4,6 +4,9 @@ import { Cochera } from '../../interfaces/cochera';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from '../../components/header/header.component';
 import { AuthService } from '../../services/auth.service';
+import { CocherasService } from '../../services/cocheras.service';
+import { Estacionamiento } from '../../interfaces/estacionamiento';
+import { EstacionamientosService } from '../../services/estacionamientos.service';
 
 @Component({
   selector: 'app-estado-cocheras',
@@ -16,25 +19,31 @@ import { AuthService } from '../../services/auth.service';
 export class EstadoCocherasComponent {
   titulo: string = 'Estado de la cochera';
 
-  filas: Cochera[] = [];
+  filas: (Cochera & { activo: Estacionamiento|null })[] = [];
 
   siguienteNumero: number = 1;
 
   auth = inject(AuthService);
+  cocheras = inject(CocherasService);
+  estacionamientos = inject(EstacionamientosService);
 
   ngOnInit() {
-    this.reload().then(filas => {
-      this.filas = filas;
-    });
+    this.traerCocheras();
   }
 
-  reload() {
-    return fetch('http://localhost:4000/cocheras', {
-      headers: {
-        'Authorization': 'Bearer ' + this.auth.getToken(),
-      },
-    })
-    .then(r => r.json())
+  traerCocheras() {
+    return this.cocheras.cocheras().then(cocheras => {
+      this.filas = [];
+
+      for (let cochera of cocheras) {
+        this.estacionamientos.buscarEstacionamientoActivo(cochera.id).then(estacionamiento => {
+          this.filas.push({
+            ...cochera,
+            activo: estacionamiento,
+          });
+        })
+      };
+    });
   }
 
   agregarFila() {
